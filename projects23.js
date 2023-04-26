@@ -1,7 +1,4 @@
 addEventListener('DOMContentLoaded', async (_) => {
-})
-
-const init = async () => {
     data = await getData();
     const cards = document.getElementById('cards')
     for (let card of data) {
@@ -20,7 +17,7 @@ const init = async () => {
         `
         cards.appendChild(createElement(html));
     }
-}
+})
 
 /**
  *  @return {Promise}
@@ -39,5 +36,3 @@ const createElement = (html) => {
     template.innerHTML = html;
     return template.content;
 }
-
-init();
