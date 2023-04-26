@@ -18,5 +18,11 @@ jobs:
         protocol: ftp
         port: 21
         server-dir: public_html/
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          *.md
+          LICENSE
         dry-run: true
         
