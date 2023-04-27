@@ -5,12 +5,23 @@ addEventListener('DOMContentLoaded', async (_) => {
         console.log(card)
         const html = `
             <div class="col-sm-6 col-lg-4 mb-4">
-                <div class="card">
-                    <div class="card-header">
-                        <p>${card.projectName}</p>
-                    </div>
-                    <div class="card-body">
-                        <p>${card.description}</p>
+                <div class="accordion" id="${card.projectName}-parent">
+                    <div class="card">
+                        <div class="accordion-item">
+                            <div class="card-header accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${trimId(card.projectName)}" aria-expanded="true" aria-controls="collapseOne">
+                                    <p>${card.projectName}</p>
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div id="${trimId(card.projectName)}" class="accordion-collapse collapse" data-bs-parent="${card.projectName}-parent">
+                                    <div class="accordion-body">
+                                        <p>Hello world</p>
+                                    </div>
+                                </div>
+                                <p>${card.description}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -35,4 +46,13 @@ const createElement = (html) => {
     var template = document.createElement('template');
     template.innerHTML = html;
     return template.content;
+}
+
+/**
+ * @param {String} string the name of the id
+ * @return {String} trimmed stringed
+ */
+const trimId = (string) => {
+    const res = string.trim().replaceAll(' ', '');
+    return res;
 }
