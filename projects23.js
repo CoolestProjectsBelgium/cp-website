@@ -5,18 +5,18 @@ addEventListener('DOMContentLoaded', async (_) => {
         console.log(card)
         const html = `
             <div class="col-sm-6 col-lg-4 mb-4">
-                <div class="accordion" id="${card.projectName}-parent">
+                <div class="accordion" id="${trimId(card.projectName)}-parent">
                     <div class="card">
                         <div class="accordion-item">
                             <div class="card-header accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${trimId(card.projectName)}" aria-expanded="true" aria-controls="collapseOne">
-                                    <p>${card.projectName}</p>
+                                    <h2>${card.projectName}</h2>
                                 </button>
                             </div>
                             <div class="card-body">
-                                <div id="${trimId(card.projectName)}" class="accordion-collapse collapse" data-bs-parent="${card.projectName}-parent">
+                                <div id="${trimId(card.projectName)}" class="accordion-collapse collapse" data-bs-parent="${trimId(card.projectName)}-parent">
                                     <div class="accordion-body">
-                                        <p>Hello world</p>
+                                        <img class="card-img" src="${card.pic}" alt="/">
                                     </div>
                                 </div>
                                 <p>${card.description}</p>
@@ -53,6 +53,6 @@ const createElement = (html) => {
  * @return {String} trimmed stringed
  */
 const trimId = (string) => {
-    const res = string.trim().replaceAll(' ', '');
+    const res = string.trim().replaceAll(' ', '').replace(/[()\d]+/g, '');
     return res;
 }

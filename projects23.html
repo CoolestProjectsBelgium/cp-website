@@ -32,11 +32,13 @@
     <style>
         body {}
 
-        .description {
-            font-size: 0.75rem;
-            font-family: futura-pt, sans-serif;
-            font-style: normal;
-            font-weight: 500;
+        .accordion-button:not(.collapsed) {
+            background-color: var(--bs-card-cap-color);
+            box-shadow: none;
+        }
+
+        .accordion-button.collapsed {
+            background-color: var(--bs-card-cap-color);
         }
     </style>
 </head>
