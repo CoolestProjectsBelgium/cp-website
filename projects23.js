@@ -2,7 +2,7 @@ addEventListener('DOMContentLoaded', async (_) => {
     data = await getData();
     const cards = document.getElementById('cards')
     for (let card of data) {
-        console.log(card)
+        // console.log(card)
         const html = `
             <div class="col-sm-6 col-lg-4 mb-4">
                 <div class="accordion" id="${trimId(card.projectName)}-parent">
@@ -34,7 +34,7 @@ addEventListener('DOMContentLoaded', async (_) => {
  *  @return {Promise}
  */
 const getData = async () => {
-    const data = await fetch('http://localhost:8000/projects.json')
+    const data = await fetch('https://backend.coolestprojects.be/website/planning/3/projects.json')
     return await data.json()
 }
 
