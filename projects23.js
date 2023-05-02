@@ -2,6 +2,7 @@ addEventListener('DOMContentLoaded', async (_) => {
     data = await getData();
     const cards = document.getElementById('cards')
     for (let card of data) {
+        console.log(card)
         const html = `
             <div class="col-sm-6 col-lg-4 mb-4">
                 <div class="accordion" id="${trimId(card.projectName)}-parent">
@@ -9,9 +10,10 @@ addEventListener('DOMContentLoaded', async (_) => {
                         <div class="accordion-item">
                             <div class="card-header accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${trimId(card.projectName)}" aria-expanded="true" aria-controls="collapseOne">
-                                    ${card.link ? '<a href="' : ''}
-                                    ${card.link}
-                                    ${card.link ? '">' : ''}
+                                    ${card.link ?
+                `<a href="${card.link}">` :
+                ''
+            }
                                     <h3>${card.projectName}</h3>
                                     ${card.link ? '</a>' : ''}
                                 </button>
