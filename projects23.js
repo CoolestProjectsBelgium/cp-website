@@ -54,7 +54,7 @@ const createElement = (html) => {
 
 /**
  * @param {String} string the name of the id
- * @return {String} trimmed stringed
+ * @return {String} trimmed string
  */
 const trimId = (string) => {
     const res = string.trim().replaceAll(' ', '').replace(/[()\d]+/g, '');
