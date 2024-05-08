@@ -59,7 +59,6 @@ const createElement = (html) => {
  * @return {String} trimmed string
  */
 const trimId = (string) => {
-    const res = string.trim().replaceAll(' ', '').replaceAll('\'', '');
-      .replace(/[()\d]+/g, '');
+    const res = string.trim().replaceAll(' ', '').replaceAll('\'', '').replace(/[()\d]+/g, '');
     return res;
 }
