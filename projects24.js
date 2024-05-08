@@ -2,7 +2,7 @@ addEventListener('DOMContentLoaded', async (_) => {
     data = await getData();
     const cards = document.getElementById('cards')
     for (let card of data) {
-        console.log(card)
+        // console.log(card)
         const html = `
             <div class="col-sm-6 col-lg-4 mb-4">
                 <div class="accordion" id="${trimId(card.projectName)}-parent">
