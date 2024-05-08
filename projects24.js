@@ -22,7 +22,7 @@ addEventListener('DOMContentLoaded', async (_) => {
                             <div class="card-body">
                                 <div id="${trimId(card.projectName)}" class="accordion-collapse collapse" data-bs-parent="${trimId(card.projectName)}-parent">
                                     <div class="accordion-body">
-                                        <img class="card-img" src="${card.pic}" alt="/">
+                                        <img class="card-img" src="${(card.pic === undefined) ? "" : card.pic}" alt="/">
                                     </div>
                                 </div>
                                 <p>${card.description}</p>
