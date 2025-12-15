@@ -20,7 +20,7 @@ jobs:
         password: ${{ secrets.ftp_password }}
         protocol: ftp
         port: 21
-        server-dir: public_html/
+        server-dir: /var/www/production/releases/20251015085127/cpbe/
         exclude: |
           **/.git*
           **/.git*/**
