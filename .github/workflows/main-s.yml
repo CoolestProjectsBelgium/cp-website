@@ -21,11 +21,4 @@ jobs:
         port: 22
         source: "."
         target: "/var/www/production/current/cpbe"
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/.vs/**
-          **/node_modules/**
-          *.md
-          LICENSE
         strip_components: 1  # Optional: Remove the first level of the directory structure if needed
