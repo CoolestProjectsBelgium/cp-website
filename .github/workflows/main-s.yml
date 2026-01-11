@@ -1,0 +1,31 @@
+on:
+  push:
+    branches:
+      - main
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v3
+
+    - name: 📂 Sync files via SCP
+      uses: appleboy/scp-action@v0.1.4
+      with:
+        host: ${{ secrets.ssh_host }}
+        username: ${{ secrets.ssh_user }}
+        key: ${{ secrets.ssh_private_key }}
+        port: 22
+        source: "."
+        target: "/var/www/production/current/cpbe"
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/.vs/**
+          **/node_modules/**
+          *.md
+          LICENSE
+        strip_components: 1  # Optional: Remove the first level of the directory structure if needed
