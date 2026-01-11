@@ -15,8 +15,8 @@ jobs:
     - name: 📂 Sync files via SCP
       uses: appleboy/scp-action@v0.1.4
       with:
-        host: ${{ secrets.ssh_host }}
-        username: ${{ secrets.ssh_user }}
+        host: ${{ secrets.ftp_server }}
+        username: ${{ secrets.ftp_user }}
         key: ${{ secrets.ssh_private_key }}
         port: 22
         source: "."
