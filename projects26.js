@@ -63,8 +63,8 @@ const createElement = (html) => {
 const trimId = (string) => {
     console.log('trimId debugging: Value:', string, 'Type:', typeof string);
     
-    // if input is null, undefined, or not a string, return an empty string
-    if (typeof string !== 'string') {
+    // if input is null, undefined, return an empty string
+    if ( !string ) {
         return '';
     }
 
@@ -72,6 +72,10 @@ const trimId = (string) => {
         .trim()
         .replaceAll(' ', '')
         .replaceAll('\'', '')
+        .replaceAll(':', '')
+        .replaceAll('!', '')
+        .replaceAll('?', '')
+        .replaceAll('"', '')
         .replaceAll(/[()\d]+/g, '');
     return res;
 }
