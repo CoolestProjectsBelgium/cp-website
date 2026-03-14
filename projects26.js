@@ -1,3 +1,4 @@
+
 addEventListener('DOMContentLoaded', async (_) => {
     const data = await getData();
     const cards = document.getElementById('cards')
