@@ -75,7 +75,6 @@ const trimId = (inputString) => {
         .replaceAll(':', '')
         .replaceAll('!', '')
         .replaceAll('?', '')
-        .replaceAll('"', '')
-        .replaceAll(/[()\d]+/g, '');
+        .replaceAll('"', '');
     return res;
 }
