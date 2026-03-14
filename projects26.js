@@ -1,11 +1,11 @@
 addEventListener('DOMContentLoaded', async (_) => {
-    data = await getData();
+    const data = await getData();
     const cards = document.getElementById('cards')
     for (let card of data) {
         // console.log(card)
         const html = `
             <div class="col-sm-6 col-lg-4 mb-4">
-                <div class="accordion" id="${trimId(card.projectName)}-parent">
+                <div class="accordion" id="${trimId(card.projectID)}-parent">
                     <div class="card">
                         <div class="accordion-item">
                             <div class="card-header accordion-header">
@@ -20,7 +20,7 @@ addEventListener('DOMContentLoaded', async (_) => {
                                 <p>${card.participants}</p>
                             </div>
                             <div class="card-body">
-                                <div id="${trimId(card.projectName)}" class="accordion-collapse collapse" data-bs-parent="${trimId(card.projectName)}-parent">
+                                <div id="${trimId(card.projectID)}" class="accordion-collapse collapse" data-bs-parent="#${trimId(card.projectID)}-parent">
                                     <div class="accordion-body">
                                         <img class="card-img" src="${(card.pic === undefined) ? " " : card.pic}" alt="/">
                                     </div>
@@ -49,8 +49,9 @@ const getData = async () => {
  * @return {Element}
  */
 const createElement = (html) => {
-    var template = document.createElement('template');
-    template.innerHTML = html;
+    let template = document.createElement('template');
+    // Sanitize the HTML input to prevent XSS
+    template.innerHTML = DOMPurify.sanitize(html);
     return template.content;
 }
 
@@ -59,6 +60,10 @@ const createElement = (html) => {
  * @return {String} trimmed string
  */
 const trimId = (string) => {
-    const res = string.trim().replaceAll(' ', '').replaceAll('\'', '').replace(/[()\d]+/g, '');
+    const res = string
+        .trim()
+        .replaceAll(' ', '')
+        .replaceAll('\'', '')
+        .replaceAll(/[()\d]+/g, '');
     return res;
 }
