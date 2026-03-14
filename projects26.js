@@ -60,6 +60,13 @@ const createElement = (html) => {
  * @return {String} trimmed string
  */
 const trimId = (string) => {
+    console.log('trimId debugging: Value:', string, 'Type:', typeof string);
+    
+    // if input is null, undefined, or not a string, return an empty string
+    if (typeof string !== 'string') {
+        return '';
+    }
+
     const res = string
         .trim()
         .replaceAll(' ', '')
