@@ -57,18 +57,18 @@ const createElement = (html) => {
 }
 
 /**
- * @param {String} string the name of the id
+ * @param {String} inputString the name of the id
  * @return {String} trimmed string
  */
-const trimId = (string) => {
-    console.log('trimId debugging: Value:', string, 'Type:', typeof string);
+const trimId = (inputString) => {
+    console.log('trimId debugging: Value:', inputString, 'Type:', typeof inputString);
     
     // if input is null, undefined, return an empty string
-    if ( !string ) {
+    if ( !inputString ) {
         return '';
     }
-
-    const res = string
+    inputString = String(inputString); // Ensure the input is treated as a string
+    const res = inputString
         .trim()
         .replaceAll(' ', '')
         .replaceAll('\'', '')
