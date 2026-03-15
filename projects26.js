@@ -6,11 +6,11 @@ addEventListener('DOMContentLoaded', async (_) => {
         // console.log(card)
         const html = `
             <div class="col-sm-6 col-lg-4 mb-4">
-                <div class="accordion" id="${trimId(card.projectID)}-parent">
+                <div class="accordion" id="${card.projectID}-parent">
                     <div class="card">
                         <div class="accordion-item">
                             <div class="card-header accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${trimId(card.projectID)}" aria-expanded="true" aria-controls="collapseOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${card.projectID}" aria-expanded="true" aria-controls="collapseOne">
                                     ${card.link ?
                 `<a href="${card.link}">` :
                 ''
@@ -21,7 +21,7 @@ addEventListener('DOMContentLoaded', async (_) => {
                                 <p>${card.participants}</p>
                             </div>
                             <div class="card-body">
-                                <div id="${trimId(card.projectID)}" class="accordion-collapse collapse" data-bs-parent="#${trimId(card.projectID)}-parent">
+                                <div id="${card.projectID}" class="accordion-collapse collapse" data-bs-parent="#${card.projectID}-parent">
                                     <div class="accordion-body">
                                         <img class="card-img" src="${(card.pic === undefined) ? " " : card.pic}" alt="/">
                                     </div>
@@ -58,10 +58,9 @@ const createElement = (html) => {
 
 /**
  * @param {String} inputString the name of the id
- * @return {String} trimmed string
+ * @return {String} trimmed string for use as identifier in css and html
  */
 const trimId = (inputString) => {
-    console.log('trimId debugging: Value:', inputString, 'Type:', typeof inputString);
     
     // if input is null, undefined, return an empty string
     if ( !inputString ) {
